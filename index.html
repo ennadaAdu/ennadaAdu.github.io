@@ -1,0 +1,96 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+<meta name="viewport" content="width = 100%, user-scalable = no" />
+<script type="text/javascript" src="extras/jquery.min.1.7.js"></script>
+<script type="text/javascript" src="extras/modernizr.2.5.3.min.js"></script>
+</head>
+<body>
+
+<div class="flipbook-viewport">
+	<div class="container">
+		<div class="flipbook">
+			<div style="background-image:url(pages/1.jpeg)"></div>
+			<div style="background-image:url(pages/2.jpeg)"></div>
+			<div style="background-image:url(pages/3.jpeg)"></div>
+			<div style="background-image:url(pages/4.jpeg)"></div>
+			<div style="background-image:url(pages/5.jpeg)"></div>
+			<div style="background-image:url(pages/6.jpeg)"></div>
+			<div style="background-image:url(pages/7.jpeg)"></div>
+			<div style="background-image:url(pages/8.jpeg)"></div>
+			<div style="background-image:url(pages/9.jpeg)"></div>
+			<div style="background-image:url(pages/10.jpeg)"></div>
+			<div style="background-image:url(pages/11.jpeg)"></div>
+			<div style="background-image:url(pages/12.jpeg)"></div>
+			<div style="background-image:url(pages/13.jpeg)"></div>
+			<div style="background-image:url(pages/14.jpeg)"></div>
+			<div style="background-image:url(pages/15.jpeg)"></div>
+			<div style="background-image:url(pages/16.jpeg)"></div>
+			<div style="background-image:url(pages/17.jpeg)"></div>
+			<div style="background-image:url(pages/18.jpeg)"></div>
+			<div style="background-image:url(pages/19.jpeg)"></div>
+			<div style="background-image:url(pages/20.jpeg)"></div>
+			<div style="background-image:url(pages/21.jpeg)"></div>
+			<div style="background-image:url(pages/22.jpeg)"></div>
+			<div style="background-image:url(pages/23.jpeg)"></div>
+			<div style="background-image:url(pages/24.jpeg)"></div>
+			<div style="background-image:url(pages/25.jpeg)"></div>
+			<div style="background-image:url(pages/26.jpeg)"></div>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+
+function loadApp() {
+
+	// Create the flipbook
+
+	$('.flipbook').turn(
+	{
+		width:1065,		// Width
+		height:300,		// Height
+		elevation: 50,		// Elevation
+		gradients: true,	// Enable gradients
+		autoCenter: true	// Auto center this flipbook
+	});
+	
+	// Arrows
+	$(document).keydown(function(e)
+	{
+		var previous = 37, next = 39;
+
+		switch (e.keyCode)
+		{
+			case previous:
+				$('.flipbook').turn('previous');
+				e.preventDefault();
+			break;
+			case next:
+				$('.flipbook').turn('next');
+				e.preventDefault();
+			break;
+		}
+
+	});
+}
+
+// Load the HTML4 version if there's not CSS transform
+
+yepnope({
+	test : Modernizr.csstransforms,
+	yep: ['lib/turn.js'],
+	nope: ['lib/turn.html4.min.js'],
+	both: ['css/basic.css'],
+	complete: loadApp
+});
+
+</script>
+
+</body>
+</html>
