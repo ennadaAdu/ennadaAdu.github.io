@@ -3,7 +3,7 @@
 body{
 	overflow:hidden;
 	background-color:#fcfcfc;
-	margin:auto;
+	margin:20px;
 	padding:0;
 }
 
@@ -17,7 +17,7 @@ body{
 	position:absolute;
 	top:50%;
 	left:50%;
-	margin:auto;
+	margin:20px;
 }
 
 .flipbook-viewport .flipbook{
@@ -50,7 +50,7 @@ body{
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	margin:auto;
+	margin:20px;
 }
 
 .flipbook-viewport .shadow{
