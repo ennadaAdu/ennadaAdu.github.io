@@ -2,8 +2,8 @@
 
 body{
 	overflow:hidden;
-	background-color:#fcfcfc;
-	margin:40px;
+	background-color:#fc;
+	margin:0;
 	padding:0;
 }
 
@@ -16,14 +16,14 @@ body{
 .flipbook-viewport .container{
 	position:absolute;
 	top:50%;
-	left:50%;
-	margin:40px;
+	left:41%;
+	margin:auto;
 }
 
 .flipbook-viewport .flipbook{
-	width:922px;
+	width:1080px;
 	height:600px;
-	left:-461px;
+	left:-540px;
 	top:-300px;
 }
 
@@ -50,7 +50,7 @@ body{
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	margin:40px;
+	margin:0;
 }
 
 .flipbook-viewport .shadow{
