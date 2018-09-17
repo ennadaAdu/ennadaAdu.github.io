@@ -1,94 +1,63 @@
-<!doctype html>
-<!--[if lt IE 7 ]> <html lang="en" class="ie6"> <![endif]-->
-<!--[if IE 7 ]>    <html lang="en" class="ie7"> <![endif]-->
-<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
-<!--[if IE 9 ]>    <html lang="en" class="ie9"> <![endif]-->
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width = device-width, initial-scale = 1.0" />
-<script type="text/javascript" src="extras/jquery.min.1.7.js"></script>
-<script type="text/javascript" src="extras/modernizr.2.5.3.min.js"></script>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 100%;
+      margin: auto;
+  }
+  </style>
 </head>
 <body>
 
-<div class="flipbook-viewport">
-	<div class="container">
-		<div class="flipbook">
-			<div style="background-image:url(pages/1.jpeg)"></div>
-			<div style="background-image:url(pages/2.jpeg)"></div>
-			<div style="background-image:url(pages/3.jpeg)"></div>
-			<div style="background-image:url(pages/4.jpeg)"></div>
-			<div style="background-image:url(pages/5.jpeg)"></div>
-			<div style="background-image:url(pages/6.jpeg)"></div>
-			<div style="background-image:url(pages/7.jpeg)"></div>
-			<div style="background-image:url(pages/8.jpeg)"></div>
-			<div style="background-image:url(pages/9.jpeg)"></div>
-			<div style="background-image:url(pages/10.jpeg)"></div>
-			<div style="background-image:url(pages/11.jpeg)"></div>
-			<div style="background-image:url(pages/12.jpeg)"></div>
-			<div style="background-image:url(pages/13.jpeg)"></div>
-			<div style="background-image:url(pages/14.jpeg)"></div>
-			<div style="background-image:url(pages/15.jpeg)"></div>
-			<div style="background-image:url(pages/16.jpeg)"></div>
-			<div style="background-image:url(pages/17.jpeg)"></div>
-			<div style="background-image:url(pages/18.jpeg)"></div>
-			<div style="background-image:url(pages/19.jpeg)"></div>
-			<div style="background-image:url(pages/20.jpeg)"></div>
-			<div style="background-image:url(pages/21.jpeg)"></div>
-			<div style="background-image:url(pages/22.jpeg)"></div>
-			<div style="background-image:url(pages/23.jpeg)"></div>
-			<div style="background-image:url(pages/24.jpeg)"></div>
-			<div style="background-image:url(pages/25.jpeg)"></div>
-			<div style="background-image:url(pages/26.jpeg)"></div>
-		</div>
-	</div>
+<div class="container">
+  <h2>gRhapravEsham</h2>
+  <div id="myCarousel" class="carousel slide" data-interval="false">
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="pages/1.jpeg" alt="Chania" width="460" height="345">
+      </div>
+
+      <div class="item">
+        <img src="pages/2.jpeg" alt="Chania" width="460" height="345">
+      </div>
+    
+      <div class="item">
+        <img src="pages/3.jpeg" alt="Flower" width="460" height="345">
+      </div>
+
+      <div class="item">
+        <img src="pages/4.jpeg" alt="Flower" width="460" height="345">
+      </div>
+    </div>
+  </div>
 </div>
 
+<script>
+$(document).ready(function(){
+   
+});
+$(document).keydown(function(e){
+	var previous = 37, next = 39;
 
-<script type="text/javascript">
+        switch (e.keyCode)
+        {
+                case previous:
+                        $("#myCarousel").carousel("prev");
+                        break;
+                case next:
+                        $("#myCarousel").carousel("next");
+                        break;
+        }
 
-function loadApp() {
-
-	// Create the flipbook
-
-	$('.flipbook').turn(
-	{
-		width:1065,		// Width
-		height:300,		// Height
-		elevation: 50,		// Elevation
-		gradients: true,	// Enable gradients
-		duration: 500,		// Duration in millisec for the flip
-		autoCenter: true	// Auto center this flipbook
-	});
-	
-	// Arrows
-	$(document).keydown(function(e)
-	{
-		var previous = 37, next = 39;
-
-		switch (e.keyCode)
-		{
-			case previous:
-				$('.flipbook').turn('previous');
-				e.preventDefault();
-			break;
-			case next:
-				$('.flipbook').turn('next');
-				e.preventDefault();
-			break;
-		}
-
-	});
-}
-
-// Load the HTML4 version if there's not CSS transform
-
-yepnope({
-	test : Modernizr.csstransforms,
-	yep: ['lib/turn.js'],
-	nope: ['lib/turn.html4.min.js'],
-	both: ['css/basic.css'],
-	complete: loadApp
 });
 
 </script>
