@@ -1,66 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <style>
-  .carousel-inner > .item > img,
-  .carousel-inner > .item > a > img {
-      width: 100%;
-      margin: auto;
-  }
-  </style>
-</head>
+<html>
 <body>
 
-<div class="container">
-  <h2>gRhapravEsham</h2>
-  <div id="myCarousel" class="carousel slide" data-interval="false">
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        <img src="pages/1.jpeg" alt="Chania" width="460" height="345">
-      </div>
+<?php
+$txt = "Hello world!";
+$x = 5;
+$y = 10.5;
 
-      <div class="item">
-        <img src="pages/2.jpeg" alt="Chania" width="460" height="345">
-      </div>
-    
-      <div class="item">
-        <img src="pages/3.jpeg" alt="Flower" width="460" height="345">
-      </div>
-
-      <div class="item">
-        <img src="pages/4.jpeg" alt="Flower" width="460" height="345">
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-$(document).ready(function(){
-   
-});
-$(document).keydown(function(e){
-	var previous = 37, next = 39;
-
-        switch (e.keyCode)
-        {
-                case previous:
-                        $("#myCarousel").carousel("prev");
-                        break;
-                case next:
-                        $("#myCarousel").carousel("next");
-                        break;
-        }
-
-});
-
-</script>
+echo $txt;
+echo "<br>";
+echo $x;
+echo "<br>";
+echo $y;
+?>
 
 </body>
 </html>
