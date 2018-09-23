@@ -7,8 +7,8 @@ body{
 }
 
 #canvas{
-	width: 1080px;
-	height: 600px;
+	width: 1024px;
+	height: 768;
 	margin: 50px auto;
 }
 
@@ -30,13 +30,13 @@ body{
 
 .sample-docs{
 	margin-top:20px;
-	width:1065px;
-	height:600px;
+	width:1020px;
+	height:570px;
 }
 
 .sample-docs .page{
-	width:532px;
-	height:600px;
+	width:510px;
+	height:570px;
 	background:white;
 
 	-webkit-box-shadow:0 0 20px rgba(0,0,0,0.2);
