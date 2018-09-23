@@ -7,9 +7,9 @@ body{
 }
 
 #canvas{
-	width: 1024px;
-	height: 768;
-	margin: 20px auto;
+	width: 960px;
+	height: 720;
+	margin: 10px auto;
 }
 
 #book-zoom{
@@ -30,13 +30,13 @@ body{
 
 .sample-docs{
 	margin-top:20px;
-	width:1000px;
-	height:560px;
+	width:940px;
+	height:530px;
 }
 
 .sample-docs .page{
-	width:500px;
-	height:560px;
+	width:470px;
+	height:530px;
 	background:white;
 
 	-webkit-box-shadow:0 0 20px rgba(0,0,0,0.2);
