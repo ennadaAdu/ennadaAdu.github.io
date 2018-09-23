@@ -18,16 +18,7 @@
 	<div id="book-zoom">
 		<div class="sample-docs">
 			<div ignore="1" class="tabs"><div class="left">  </div> <div class="right"> </div></div>
-			<div class="hard"></div>
-			<div class="hard"></div>
-			<div class="hard p29"></div>
-			<div class="hard p30"></div>
 		</div>
-	</div>
-
-
-	<div id="slider-bar" class="turnjs-slider">
-		<div id="slider"></div>
 	</div>
 </div>
 
@@ -81,36 +72,6 @@ function loadApp() {
 
 	});
 
-	// Slider
-
-	$( "#slider" ).slider({
-		min: 1,
-		max: 100,
-
-		start: function(event, ui) {
-			if (!window._thumbPreview) {
-				_thumbPreview = $('<div />', {'class': 'thumbnail'}).html('<div></div>');
-				setPreview(ui.value);
-				_thumbPreview.appendTo($(ui.handle));
-			} else
-				setPreview(ui.value);
-
-			moveBar(false);
-		},
-
-		slide: function(event, ui) {
-			setPreview(ui.value);
-		},
-
-		stop: function() {
-			if (window._thumbPreview)
-				_thumbPreview.removeClass('show');
-			
-			$('.sample-docs').turn('page', Math.max(1, $(this).slider('value')*2 - 2));
-		}
-	});
-
-
 	// URIs
 	
 	Hash.on('^page\/([0-9]*)$', {
@@ -154,12 +115,13 @@ function loadApp() {
 	// Create the flipbook
 
 	flipbook.turn({
+		display : "single",
 		elevation: 50,
 		acceleration: false,
 		gradients: true,
 		autoCenter: true,
 		duration: 1000,
-		pages: 30,
+		pages: 26,
 		when: {
 
 		turning: function(e, page, view) {
@@ -191,27 +153,11 @@ function loadApp() {
 			}
 
 			Hash.go('page/'+page).update();
-
-			if (page==1 || page==pages)
-				$('.sample-docs .tabs').hide();
-			
-
 		},
 
 		turned: function(e, page, view) {
-
 			var book = $(this);
-
-			$('#slider').slider('value', getViewNumber(book, page));
-
-			if (page!=1 && page!=book.turn('pages'))
-				$('.sample-docs .tabs').fadeIn(500);
-			else
-				$('.sample-docs .tabs').hide();
-
 			book.turn('center');
-			updateTabs();
-
 		},
 
 		start: function(e, pageObj) {
@@ -239,7 +185,7 @@ function loadApp() {
 
 		}
 	}
-	}). turn('page', 2);
+	});
 
 
 	$('#slider').slider('option', 'max', numberOfViews(flipbook));
