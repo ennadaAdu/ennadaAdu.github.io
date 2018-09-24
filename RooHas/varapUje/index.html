@@ -1,0 +1,300 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+<script type="text/javascript" src="../../extras/jquery.min.1.7.js"></script>
+<script type="text/javascript" src="../../extras/jquery-ui-1.8.20.custom.min.js"></script>
+<script type="text/javascript" src="../../extras/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="../../extras/modernizr.2.5.3.min.js"></script>
+<script type="text/javascript" src="../../lib/hash.js"></script>
+
+</head>
+<body>
+
+<div id="canvas">
+	<div id="book-zoom">
+		<div class="sample-docs">
+			<div ignore="1" class="tabs"><div class="left">  </div> <div class="right"> </div></div>
+		</div>
+	</div>
+</div>
+<br/>
+<div class="home">
+	<a href="../index.html">Home</a>
+</div>
+<style>
+.home
+{
+	display: block;
+	height: 32px;
+	text-align: center;
+	background: #ae997a;
+	color: #fff;
+}
+.home a:hover {
+	background: #8c795d;
+	color: #fff;
+}
+</style>
+
+<script type="text/javascript">
+var Pages;
+
+	//prefix of the page names
+	Pages =
+	[
+		"1Jj2RkO9U-k6FzhPApwb1IW44GSv5tKQj",
+		"1F1kw1UzVqgDGZEPLkGRXLdHROkEVWkmS",
+		"1G2N8KGBDMOVhFnV1xxMHFXuKXpH_yPJB",
+		"1hgoXyYgNP3U1JMi6VbuQi8SVO5-KfeAw",
+		"1emdWvE9YZ059THD21AXOFuIFm5Lg-y8R",
+		"1pkcIY-MFWv9H-amV7QuuDyflMsyVxTaX",
+		"1_3d70Px-qTx2InmbaXvM5K7j6o04oqw0",
+		"1F9RzLpaxMn6qbEA-6FQS31aGbfJsbLU0",
+		"1KhCHNjkQfbjtWgt4OfwXp1nQHcqtB2TJ",
+		"17ecfyTcQZ6beIiDl_ANDRPUkWPmgzMCb",
+		"1jf6RkD3KSdcMUQrFqxXgIcI4SHBRW0wi",
+		"1CLMSM7pb127ZkBDmv5CEFTokrKIiQUme",
+		"1HW0DUQT0AfyRiM3GWSoCFpGcwdnVSSMX",
+		"1Z9V2lHaD109wMP9IojYC67f2UtdDdxRV",
+		"1vyh-RKWKc7VWlen4mUs5VPlpkmIu0j3q",
+		"1aC_62pG5UfIL1oOv65nqr7Khn0nGY6Cc",
+		"13l7jyXdPIxxJPnKD_KNsyDnm5WBSLHgg",
+		"1i19wtFN5LxUkiMeRNcCcI4hTAebklAXH",
+		"1WruAvgLU9bHv6m4ODH2EVxxcKR2Fi9dc",
+		"1CFX-51dMurlZSFOBkHO2pKChjnTct0qT",
+		"1rgDFnf0fZFTu_y2eeeboBHl18Ajhci4d",
+		"1onBaEnzJmRzocH98APiHnCGmaxG_rgbE",
+		"1d5wxKUPqkA5nvYpLBpwMh4xPjw1xLZjl",
+		"1rC0m7clNFQ4psxuTmim5eGRAaNmJwytK",
+		"18qeT9SNg-Wym0oNDWc5-beXq5soivOTR",
+		"1RtWjG32h8bFfEDvd6KE6ZEmkOJSkkezu",
+		"16AZumYfyqU14f788ALBX-QWYXQhxJCiA",
+		"1t6uJ7nmIfhgmvKsYst6B4WTKRcju6JMB",
+		"18ND4u4IHONQdpIF5aRUkQYb_T86fXOwo",
+		"1YJ0ay1G_bMv8AoatkXGneEMRyZ9rieA-",
+		"1F44E1Jjo0hBqH1ZnVgL5l-bUu7d2IT9a",
+		"1pYDuEQaYZjFYPrzS65x9_aw2HAnUF_w5",
+		"1HsTAcoeleFbe0gUIje_7REtj0vOyKZuD",
+		"1Ay6Tx74r7WG23FhVMh-GmGsXY5Ogv7wC",
+		"1dXH73lMQ6GhncpP7n78m5bnmXVkADZoA",
+		"1-Itk8iAsHJU5FE6N9O9uTSyRKVT__9Ug",
+		"1A5ya5TwHmSPufe6IkFF98w2F3z52z4kC",
+		"16Iyt4LCLX6XmgrSWnOFf93Hyogi4-1IW",
+		"1MHMG-RTSVoH_7XqrQxhxmCcLDrMMbdOU",
+		"1inJmDOSORNi8_A_6b6pYfascdupZsHi8",
+		"12l1jPURbKoXpZ52LA5PD27RSAAOPDUsC",
+		"1zCawNw-wapiaWNFd_C7lJBA1Kcs4TouC",
+		"14YzeBO7aOVjdhD6axgNGl17rvL4B4GOy",
+		"1ShF13wjOV4VUtH4BkRRL6HDTPbBPTtVA",
+		"1mIEmcg5HUt88mV8YdnrIrAs3ui5Ds9dP",
+		"1CegTXw6Ehf0wKPlEgmwsSmKX5OlYLbjF",
+		"101ImY3SQvXTDqSaRTCiumqeMP8HIsJQ9",
+		"1dtQ-VGsJmpbXkPuIljDCMux8wKskLR9R",
+		"14-3UB964--njxhpdYD-HbcNxxH1X8iFK",
+		"15R1oaldVfDnzLNxE8YDiGt3vzFS6SkHj",
+		"1E8Hj6GuByDQ1U_7BicBGnjBp7fuv5w_2",
+		"1WaNGbI6C8M2TdIFYd-f6C722MEfEQ3fy",
+		"1ol0AYaQwGoDqjSTjNbabM1vk2dvyVfWw",
+		"1iGHsUWPXL0hTKDKwPlVhY9BCfoqPohVx",
+		"1KK8FH8vIsPRUvVym2rs67FZB03fUC9Ei",
+		"1C0aEjdOqwHKdku9QZ6CJlziMWMKNk2nT",
+		"1N347Xz9kCy0kVEscL62APNiTgOiYre-Y",
+		"1m8S6qZKv1KTYs_VUNbSaa5Mrn0NRQRIn",
+		"1xnxyK8dMXvsZYJuB_WVf--R0gpi8pInh",
+		"1R0nZypAigdUhugFBWhT5lNzgvME2SzbR",
+		"1wLldLYCsbELF1ZCvUFLf157N-F-cwfGu"
+	];
+
+function loadApp() {
+
+	var flipbook = $('.sample-docs');
+
+	// Check if the CSS was already loaded
+	
+	if (flipbook.width()==0 || flipbook.height()==0) {
+		setTimeout(loadApp, 10);
+		return;
+	}
+
+	// Mousewheel
+
+	$('#book-zoom').mousewheel(function(event, delta, deltaX, deltaY) {
+
+		var data = $(this).data(),
+			step = 30,
+			flipbook = $('.sample-docs'),
+			actualPos = $('#slider').slider('value')*step;
+
+		if (typeof(data.scrollX)==='undefined') {
+			data.scrollX = actualPos;
+			data.scrollPage = flipbook.turn('page');
+		}
+
+		data.scrollX = Math.min($( "#slider" ).slider('option', 'max')*step,
+			Math.max(0, data.scrollX + deltaX));
+
+		var actualView = Math.round(data.scrollX/step),
+			page = Math.min(flipbook.turn('pages'), Math.max(1, actualView*2 - 2));
+
+		if ($.inArray(data.scrollPage, flipbook.turn('view', page))==-1) {
+			data.scrollPage = page;
+			flipbook.turn('page', page);
+		}
+
+		if (data.scrollTimer)
+			clearInterval(data.scrollTimer);
+		
+		data.scrollTimer = setTimeout(function(){
+			data.scrollX = undefined;
+			data.scrollPage = undefined;
+			data.scrollTimer = undefined;
+		}, 1000);
+
+	});
+
+	// URIs
+	
+	Hash.on('^page\/([0-9]*)$', {
+		yep: function(path, parts) {
+			var page = parts[1];
+
+			if (page!==undefined) {
+				if ($('.sample-docs').turn('is'))
+					$('.sample-docs').turn('page', page);
+			}
+
+		},
+		nop: function(path) {
+
+			if ($('.sample-docs').turn('is'))
+				$('.sample-docs').turn('page', 1);
+		}
+	});
+
+	// Arrows
+
+	$(document).keydown(function(e){
+
+		var previous = 37, next = 39;
+
+		switch (e.keyCode) {
+			case previous:
+
+				$('.sample-docs').turn('previous');
+
+			break;
+			case next:
+				
+				$('.sample-docs').turn('next');
+
+			break;
+		}
+
+	});
+
+	// Create the flipbook
+
+	flipbook.turn({
+		display : "single",
+		elevation: 50,
+		acceleration: false,
+		gradients: true,
+		autoCenter: true,
+		duration: 1000,
+		pages: Pages.length,
+		when: {
+
+		turning: function(e, page, view) {
+			
+			var book = $(this),
+			currentPage = book.turn('page'),
+			pages = book.turn('pages');
+				
+			if (currentPage>3 && currentPage<pages-3) {
+				if (page==1) {
+					book.turn('page', 2).turn('stop').turn('page', page);
+					e.preventDefault();
+					return;
+				} else if (page==pages) {
+					book.turn('page', pages-1).turn('stop').turn('page', page);
+					e.preventDefault();
+					return;
+				}
+			} else if (page>3 && page<pages-3) {
+				if (currentPage==1) {
+					book.turn('page', 2).turn('stop').turn('page', page);
+					e.preventDefault();
+					return;
+				} else if (currentPage==pages) {
+					book.turn('page', pages-1).turn('stop').turn('page', page);
+					e.preventDefault();
+					return;
+				}
+			}
+
+			Hash.go('page/'+page).update();
+		},
+
+		turned: function(e, page, view) {
+			var book = $(this);
+			book.turn('center');
+		},
+
+		start: function(e, pageObj) {
+	
+			moveBar(true);
+
+		},
+
+		end: function(e, pageObj) {
+		
+			var book = $(this);
+
+			setTimeout(function() {
+				$('#slider').slider('value', getViewNumber(book));
+			}, 1);
+
+			moveBar(false);
+
+		},
+
+		missing: function (e, pages) {
+
+			for (var i = 0; i < pages.length; i++)
+				addPage(pages[i], $(this));
+
+		}
+	}
+	});
+
+
+	$('#slider').slider('option', 'max', numberOfViews(flipbook));
+
+	flipbook.addClass('animated');
+
+
+	// Show canvas
+
+	$('#canvas').css({visibility: 'visible'});
+}
+
+// Hide canvas
+
+$('#canvas').css({visibility: 'hidden'});
+
+yepnope({
+	test: Modernizr.csstransforms,
+	yep: ['../../lib/turn.min.js', 'css/jquery.ui.css'],
+	nope: ['../../lib/turn.html4.min.js', 'css/jquery.ui.html4.css'],
+	both: ['../css/docs.css', '../js/docs.js'],
+	complete: loadApp
+});
+
+</script>
+
+</body>
+</html>

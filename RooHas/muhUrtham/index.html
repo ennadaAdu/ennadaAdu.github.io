@@ -1,0 +1,422 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+<script type="text/javascript" src="../../extras/jquery.min.1.7.js"></script>
+<script type="text/javascript" src="../../extras/jquery-ui-1.8.20.custom.min.js"></script>
+<script type="text/javascript" src="../../extras/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="../../extras/modernizr.2.5.3.min.js"></script>
+<script type="text/javascript" src="../../lib/hash.js"></script>
+
+</head>
+<body>
+
+<div id="canvas">
+	<div id="book-zoom">
+		<div class="sample-docs">
+			<div ignore="1" class="tabs"><div class="left">  </div> <div class="right"> </div></div>
+		</div>
+	</div>
+</div>
+<br/>
+<div class="home">
+	<a href="../index.html">Home</a>
+</div>
+<style>
+.home
+{
+	display: block;
+	height: 32px;
+	text-align: center;
+	background: #ae997a;
+	color: #fff;
+}
+.home a:hover {
+	background: #8c795d;
+	color: #fff;
+}
+</style>
+
+<script type="text/javascript">
+var Pages;
+
+	//prefix of the page names
+	Pages =
+	[
+		"1ahNIlBEucn2TIsJR4flBWGAdGma5kkwq",
+		"1ywfArXTTZb-NkTjZsvWpJKnfQdRkFUmk",
+		"1Fro6L3vejppLUVCBc5CHhj6tJtsGpa5X",
+		"1D_wFH0H44cLaosjUV9kT7Iith-8rakbX",
+		"1IuWTyb14IsjXbRsHXs-maUS6QBtCMqVP",
+		"1iYLDeHQe13f0HDH84iZGlL9VjrHyq3c1",
+		"1UzushZ7xy6KtFm6A9YiMC4ubMY52OsHw",
+		"1icGGq1XzUcVIyU_c09Z6k-mwLLWPMChK",
+		"1pC2B1lgl79zI7tXYqabqOJzrc2NMEcB0",
+		"1FhD1s6wzXSau9-F150QrdTe8GDTKESdP",
+		"19clRKAUpX1ZmL2ryNbaTcVCUXHFUYEmu",
+		"1sIIUOT8Y5BTbQu9yeysDtLGfZhBz6OQe",
+		"16moisB-MQv3N4B_11KgXSPbhUUcq_MMY",
+		"1KUG_hLg-aZ8jD0ggr2GSQ9lpfRXJWXZw",
+		"1bhlQqxPj-VakwhLTaE4G9bTJ0z-9PZJC",
+		"1VvR_GRiVB3UUtKC4-52z8dsTwkKi_o74",
+		"1JzEOtDgqKvMohRV5qiod4Oks84YfgtMW",
+		"1_p5s4TNDUol7I3Ah1scJzbcU-H56QbDz",
+		"1WGXRTTlmA6JQaO01viKGMn2pKFFBomhq",
+		"179fkGdPX7GLHkydtpifvuowVprzCLVF6",
+		"1RzqK8xJTefO7NJmxBoXJvC5-lKbLyoNw",
+		"1IKxCbA2McBu6Z0p3YAj_mm0XfEOLcF-R",
+		"1kVrQ9GYF92psdZ8chO4XLFpYYmNrvBkd",
+		"16BipBxIhOT57oWa_UGv2yIVzznS9DR7c",
+		"1MvvUiOc-HazFaaDgLQmJmOPS-Sb9hnQs",
+		"1Ju6FMmmy2dRupSWt_3hJDIJzcGx_bxQR",
+		"1JiDlUVFiNyW-QX7Vmxd0FJRLqEtEE1ou",
+		"1c7prrCVjeafoMEFLTGyTxoc__KS-7ioc",
+		"1Mj6Eh85KDZjDvRLPYqnICL0SW6x81oVx",
+		"1PvmrRIz9PsJvGDrR9JDf4L97q4gHK7NT",
+		"1sSTJ2AA6nRy5ml92O4P8hZhn-Lhh2rdb",
+		"1pVYjoJbK7_v3q6rUu2fl9VBe3JIj4RFz",
+		"1HEzrt6ZVVepqjzG5mnrRF3qOV0cDrLlV",
+		"15DUeRqKY-eEyi9mzYAxPbixKFeHKfzv7",
+		"1hSwq0lRLuJ1BsaHC3lTdaeqy_aiU7SCL",
+		"1KNRSlAiJFgm_dIzZBET7p9QrIKl_aPgE",
+		"1yfAO_qCHoLqhYr-IyYOm02OtKgWUFw3W",
+		"1WYWHLmFhtkv-6g4ZbhZMh2YJnDJLVLBy",
+		"1SyQTCH68CH8BYgPevXPAdRPW-Qnhsxfb",
+		"1zvRkzjIC78hxvJc1gZhwaf49vdK256kp",
+		"1aUMsZjzAO8KiGmO-H_HO51haSBC80txc",
+		"1BWThNSCFsJdZIaRpeMtD3Np6lwr8IBET",
+		"1wR4zFf3b6iRPTLLH_LyDyqjgpQwk43Pz",
+		"1EwzJn7c9mzBLP4IBiIS-G8V7-FV7HNob",
+		"1W-Vou-0HxEgIK8NsPnXadDrgo7rvb531",
+		"1ed-2HJQhxwB6wms5lzBu3YuqzmcskLoU",
+		"15l7yAXSPLJ7Jo7FwjMZe9n90PuwL3Fnn",
+		"1dCW1OOBh8j_FUXpaw3cyaulcnx-cvH1y",
+		"1Ky3cwD9cOKdgsd7G3rym5AYqNUSBX6MK",
+		"12IVOo_Y8RTfmf1hWLMRqSXCcwxv3Fo08",
+		"1Pqh61XwBwiHI03fNFAUZiKRvxsGmGXBB",
+		"1-KqpP_ry7UuucuolRkO4A2WDfq7QO6UD",
+		"16gsj5IQleB6HCfAJG0u3cJIiyeO8DD1T",
+		"1kTwgLhO09vo8OEReDbszT_n5-mTunapV",
+		"1Jes8rPcBdfPih1NYnYLTDC4kcS2HjXNq",
+		"1wCWgf8TCQxbGWk6Mb-TB1rVV_jtTgueS",
+		"1EkSfSXEr9I7BwEoo7offllz_XY3aUm7B",
+		"1v3mZBiAre16FGQ5_uECKTTvNaFZdh5r0",
+		"1B0ogWfXUVW5b4ZaoKhsKJs0-DF2kgtiT",
+		"1SxXlZ33uWclSmEhJ2ISaPsiiJqNRk7Jy",
+		"18W-ryirld5-bJAYfgrVf7-PsWSjzu1DZ",
+		"1ObtOLLjEwYY3YOJMFgZ93lfL2OKwlgxG",
+		"1x7G3j9Rh8vSbWsE2kw-5l3ZrneP9FURv",
+		"1SfWnS1trgDdBV3MnxKQ3IJT-uuYFpsZw",
+		"1zUvEfe-n-OtUn63_b0RcO7GyqlPGEJ33",
+		"1c9xqvZhK8ZaGy7PkdaS0V2VvN7nz5KbF",
+		"18U0h3Oy_H4YNo3JVfTZqRwjt5vIbJBX-",
+		"1V9YhkFMFlCeg5veV9QGCPOsm6gH8Ykdv",
+		"1PMgNrNK6gEB3vnqFO9S0M0B6zrNpeLKb",
+		"1rhkKI8IdpmfhM9x_vDlVmwwQqx-pC3Xs",
+		"17NsZRkPjCwMyn8OOVUp2hC53PePPIQRb",
+		"1ooK3GCtyHJB9kmZeyJPWFDDfzXzDdx0c",
+		"1KZ-jiK2tpeG9T835XnKKU3iWaRGueFVf",
+		"1i5EaA7Ep1rDF809tZbLDwerqnsTaaTVc",
+		"1S94mPDXa6YanucIjrGl1OSxZxUr_E-Sd",
+		"1dGa6ZCu_gH8j3dK_tfO2HjTLsL6AMeW8",
+		"1avrg4zCplP4SRHEigf-Qt2mHOcBkRCWa",
+		"1v6RgthUj0f_o1jQDrjvByTBUsanRWW4C",
+		"1jnuODC6-rrB1YWExCugXLuomEFUtH2Fp",
+		"11t2bEUzmbCKqPfai_clyhsitNXwTtX8q",
+		"1G7dT1fsA6lrSTRqMvTES65i1oqimrjJD",
+		"1law9y01leuhPqR15PB9lr2x5PqhCILkf",
+		"1T_uwcmJQCfy1ciUBEhGTgihNr1Ob_H86",
+		"15Bny-5GYEtsP7b7jwqgmA7wvDJTqAJQM",
+		"1pH7PFeE2XhNNxC4g-ljIC9wUW6EP4BV4",
+		"14g9AmTRq8ETgr-IR1tqzXx_Et49vWN1r",
+		"1x0IhPm75MVEReSWlx_cuP-IMXJXH9TzR",
+		"1hIfWaKjqp5q0xH-1S6USFU5GNKbUaDyO",
+		"1eaJr-y9_dh_5B4_zOYqtaTrVzhjWwhiV",
+		"1lBJYw59HS-4o0YMeOthJmpVl4y_pp23M",
+		"1GIQAQnq0tvtjVxkcwmknGvXq77ONZKer",
+		"1gvYeDmkXmxcShcMQads_AS5w6xJ5acUD",
+		"1Berdz5qVsd8SBitXBjWOs1_ZEsqaHZt5",
+		"1lHko-4Nl25p2c0RRbNJNT_c_SknDpTC_",
+		"1yM6DnP3m3XQMYna29eFud2CabQfqYye-",
+		"1BE-vCVejjz38FDeNT6D1TwZYzjDs3ZNd",
+		"1nQo6vOcjpnUDY1QNrU_2zY24HfWhZzhA",
+		"1RDo3niM8AH7TI7tAmemiqyCkqltiSdoY",
+		"1_xMYCHmLRi2HV0oQ7FwX8vEP0v874mzB",
+		"1Jd-1fYgpvk2zRsCENuiNsP-udkB5mUot",
+		"1ut6RtjN9FKYJ3LqSTJwOx6Oulsm4S05A",
+		"1B6TlE5WYpKijRRUfljmRYCgXrR2f_UN5",
+		"1u8o4dLnJ31t0WDCbFrX07jJ688OojrY1",
+		"1NmSbW4hQRDV95hVF-iqZhpta4kKOg-gK",
+		"15tm55_qSQP4feCYIDaN4FKUZH6xLXYPY",
+		"1u2vkXb0y-YbDxRhya0J_i-szdDu0zUlT",
+		"1n45Anxn0cUiFKHAX9Z148ljgyPXXNyKc",
+		"1cuHDmbhMBoGpYc5hCV_W9qopFSwfErFa",
+		"1Mzy58Wvqoi3IHbSBxTtID1vv_1F01heM",
+		"10DgsXTXLsiUVqYt79lKZVAKue81FlnOX",
+		"1LdxehHcvQ0ITtMsXyFzBcOKp4ws1RoAe",
+		"1eP-fdYsg1XKvJ5V6sb37m9pntC-Oufoi",
+		"1doV8BMW9DytYajheTf5oI4TzHJlTotsS",
+		"1tPG_HBuHOsBIzdXVm5-90aeO2zaqQh5Z",
+		"16S83Qz5XctjfSCAP5sOxWkIQmflqWL1y",
+		"1xSZ1o7hX_yTD9jtlqwjbl61160OmayuV",
+		"18KAYRWRWtdx1OilhGd00nBKeVHW0J0Xh",
+		"1vTNRZiIWBFLdrdecxs5Gg1Cskqbc5Boc",
+		"10KMo-I8XaVADPih151GnQjowQKUZAkSf",
+		"1OikzTJIkqmsCF__GnbHKXNKxWZqLN-bP",
+		"1Ek_axfAbJAy_UpZd9LbhpUF1OtTtT6gE",
+		"1icPhKiv0X5KnJMDELwDgsF4s0Tgg9wyD",
+		"1RC11sZQRCSE8_UsO9IeIVP_wFCZ1o_ug",
+		"1QofsE9TW1D4t2xF8jPHmyDMy6H8keVfD",
+		"12qDejZbSF2uKMo7BC2T9CacsFxbdmReR",
+		"1Y2FUj6h3U1BecTZTRTV3WF9FPT4aPkvi",
+		"1wpc13A7u3aqM0SX14MTaQJcEhfgF5kbp",
+		"11kiiq9DJnlHmn3HsD1oBgKpaGzhARouJ",
+		"1PMTb6J8sBTKRQzUMyq3GeJRoHIPZOFbE",
+		"1jIG3M_SF6nXrSmud7ghNwPD3648WnEfp",
+		"1PrcBIGbCN6suFuKvJkkU1qgYqX_ipiTm",
+		"1vHFaBXHVSc-Jywa361I-vjdiaztnSQ1Q",
+		"1hHCt9QBgLJg9HTpKlnnBym72mliNlrUp",
+		"1btlzVV-zEjyFnWUKymihTgXcDU4eO5TO",
+		"1ZTnx7Cldq7_XH9HsBKV4BP-VUtgIJdj3",
+		"1xxaT1Nchb-WLp-SS-Fx8QHU6rXXZwh_2",
+		"1T1LgCfaHNgAKOBqRaYwzRPfVAE01JM5t",
+		"1dvqxE7XPD9h2ZNluJPk8NoFCPXsYnUCW",
+		"1sr8o3SfuRrHvji8kqke9Z04zqgnN9xi8",
+		"19sokW1RgJ9s3aTo0EoqGHqZOvBItnT3B",
+		"16ox9kXtHzKdAaR4vha17tLu2OHR36ZW_",
+		"1gU-A3VW6SQyp0hzN3l254p41ouyAwWWu",
+		"1QhS-BvVIFHw9h-p_X5ucQ1o5FUp40Z1u",
+		"1U3zaL86j_zwJZi8l4xohIdximM8JzUWB",
+		"1t-_kZ5U8gXqOp47Z2Os35hmgYIbic53a",
+		"1JEHMuyAR34ovNF3NiuFfOMx6rjQ4Y1k0",
+		"1srNR734sRyrX_iKZkWlDffon9bKNa7fl",
+		"1sSQKHRK-53_2m8pwFmAFbHBioRZi7kGh",
+		"1FIiHnMEnJa-Hm9BbS3R9fUWApaXEQkiB",
+		"1WJuavRb0rZp56g47UR75WRuNzLhED-6b",
+		"1ZO-XwoqxloTmP9NAs8UZpQTsu_RjZEtT",
+		"1FZhclW85E4Ff1jqKckQyY-iezZmTgGnJ",
+		"14BDy6DcTDTwKhToJvCq4_tGCAVY7-Sqn",
+		"1dNLTMCCT_OVC7tV7FB6QfWrq976CpCs6",
+		"1nGDhxGRohT6R1Dccv9l37-wkh-hrPIfr",
+		"1jYea86YEf2rcmyhkEpfIOnFLFGZxHM2L",
+		"1DwWC2-Kj_sb7C0NEk3zDSY1D4Sji0PO0",
+		"1wf56OfbYbuQCjvSFYgOPqamufnyssH82",
+		"1heEh7rdm1YNns-VWgGNZQFAvJS6dRG7G",
+		"14p_S8_kqezgvUpiNDM1rT1urM5-j07et",
+		"1ayxRtINDAa2unkoVbYJBba-4-j_CHD02",
+		"1qJrODyIMykTUQoS7DlR8cuOGtLuhvCaQ",
+		"1R2hsvy8rK8XMwOYCZ0Q67WPXzY45xowI",
+		"1ATRSOwobC2NSdzxdeaYgNVSyB4lqdFbp",
+		"1Wef-Y6aq-lEFMTA5iG0yPJAxbsq-92PI",
+		"16d0xR_w3CciDbPv6j0i97Walju-Eckbp",
+		"1u4r9U_juERzu6H5baUlpheFEunQM2HdV",
+		"1BuA2iHIhOmJQSpIr5UL676WWLea58Y3I",
+		"1YY0zjuJPF1VtzS5tl1sI3Q0Z69Apa66N",
+		"1tdOo63dRuMiVdDvxA_2PUP7brpT6PKc9",
+		"15nAoi9LDOQ6vwQ08JxnAYHhKAKTwhHQ7",
+		"1WI0A4J_CINHO01hAVu4mdnMGJAMp3jmb",
+		"1WdGuBZKZzxUFNNxDu7qtnjXI8JDkcldO",
+		"11NO-TPsfYCIWwJZkZrHBeSZrmQiUw0Tn",
+		"1VC9tuEcaro2s1V4f6tZ6hBNdOJ30HoA7",
+		"1xWz1lUbuclsfyPxDmw_H357Vi5UIL3Q1",
+		"1my8xX2ZXdL9kjUDgCJOkluSw3K63m0fq",
+		"1NvyQJf85hI3CHKnAXldFSQ9UQTdbyK6m",
+		"1qv9XUPtoAw_VqSKLARM5BmoJ2uynKudA",
+		"1t6af5O3OiAGsHqF4q0GsE_ITM2tuOBoZ",
+		"1aGoynreyKK-g2LT1Bnx500xCZXrbl9A8",
+		"1kvN293gWDzUuZggPerUxU6Nuq7RV_aVc",
+		"1Ap0annhS1hE7TdXNxtLatvEbTtcyUBIC"
+	];
+
+function loadApp() {
+
+	var flipbook = $('.sample-docs');
+
+	// Check if the CSS was already loaded
+	
+	if (flipbook.width()==0 || flipbook.height()==0) {
+		setTimeout(loadApp, 10);
+		return;
+	}
+
+	// Mousewheel
+
+	$('#book-zoom').mousewheel(function(event, delta, deltaX, deltaY) {
+
+		var data = $(this).data(),
+			step = 30,
+			flipbook = $('.sample-docs'),
+			actualPos = $('#slider').slider('value')*step;
+
+		if (typeof(data.scrollX)==='undefined') {
+			data.scrollX = actualPos;
+			data.scrollPage = flipbook.turn('page');
+		}
+
+		data.scrollX = Math.min($( "#slider" ).slider('option', 'max')*step,
+			Math.max(0, data.scrollX + deltaX));
+
+		var actualView = Math.round(data.scrollX/step),
+			page = Math.min(flipbook.turn('pages'), Math.max(1, actualView*2 - 2));
+
+		if ($.inArray(data.scrollPage, flipbook.turn('view', page))==-1) {
+			data.scrollPage = page;
+			flipbook.turn('page', page);
+		}
+
+		if (data.scrollTimer)
+			clearInterval(data.scrollTimer);
+		
+		data.scrollTimer = setTimeout(function(){
+			data.scrollX = undefined;
+			data.scrollPage = undefined;
+			data.scrollTimer = undefined;
+		}, 1000);
+
+	});
+
+	// URIs
+	
+	Hash.on('^page\/([0-9]*)$', {
+		yep: function(path, parts) {
+			var page = parts[1];
+
+			if (page!==undefined) {
+				if ($('.sample-docs').turn('is'))
+					$('.sample-docs').turn('page', page);
+			}
+
+		},
+		nop: function(path) {
+
+			if ($('.sample-docs').turn('is'))
+				$('.sample-docs').turn('page', 1);
+		}
+	});
+
+	// Arrows
+
+	$(document).keydown(function(e){
+
+		var previous = 37, next = 39;
+
+		switch (e.keyCode) {
+			case previous:
+
+				$('.sample-docs').turn('previous');
+
+			break;
+			case next:
+				
+				$('.sample-docs').turn('next');
+
+			break;
+		}
+
+	});
+
+	// Create the flipbook
+
+	flipbook.turn({
+		display : "single",
+		elevation: 50,
+		acceleration: false,
+		gradients: true,
+		autoCenter: true,
+		duration: 1000,
+		pages: Pages.length,
+		when: {
+
+		turning: function(e, page, view) {
+			
+			var book = $(this),
+			currentPage = book.turn('page'),
+			pages = book.turn('pages');
+				
+			if (currentPage>3 && currentPage<pages-3) {
+				if (page==1) {
+					book.turn('page', 2).turn('stop').turn('page', page);
+					e.preventDefault();
+					return;
+				} else if (page==pages) {
+					book.turn('page', pages-1).turn('stop').turn('page', page);
+					e.preventDefault();
+					return;
+				}
+			} else if (page>3 && page<pages-3) {
+				if (currentPage==1) {
+					book.turn('page', 2).turn('stop').turn('page', page);
+					e.preventDefault();
+					return;
+				} else if (currentPage==pages) {
+					book.turn('page', pages-1).turn('stop').turn('page', page);
+					e.preventDefault();
+					return;
+				}
+			}
+
+			Hash.go('page/'+page).update();
+		},
+
+		turned: function(e, page, view) {
+			var book = $(this);
+			book.turn('center');
+		},
+
+		start: function(e, pageObj) {
+	
+			moveBar(true);
+
+		},
+
+		end: function(e, pageObj) {
+		
+			var book = $(this);
+
+			setTimeout(function() {
+				$('#slider').slider('value', getViewNumber(book));
+			}, 1);
+
+			moveBar(false);
+
+		},
+
+		missing: function (e, pages) {
+
+			for (var i = 0; i < pages.length; i++)
+				addPage(pages[i], $(this));
+
+		}
+	}
+	});
+
+
+	$('#slider').slider('option', 'max', numberOfViews(flipbook));
+
+	flipbook.addClass('animated');
+
+
+	// Show canvas
+
+	$('#canvas').css({visibility: 'visible'});
+}
+
+// Hide canvas
+
+$('#canvas').css({visibility: 'hidden'});
+
+yepnope({
+	test: Modernizr.csstransforms,
+	yep: ['../../lib/turn.min.js', 'css/jquery.ui.css'],
+	nope: ['../../lib/turn.html4.min.js', 'css/jquery.ui.html4.css'],
+	both: ['../css/docs.css', '../js/docs.js'],
+	complete: loadApp
+});
+
+</script>
+
+</body>
+</html>

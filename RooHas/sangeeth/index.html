@@ -1,0 +1,314 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+<script type="text/javascript" src="../../extras/jquery.min.1.7.js"></script>
+<script type="text/javascript" src="../../extras/jquery-ui-1.8.20.custom.min.js"></script>
+<script type="text/javascript" src="../../extras/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="../../extras/modernizr.2.5.3.min.js"></script>
+<script type="text/javascript" src="../../lib/hash.js"></script>
+
+</head>
+<body>
+
+<div id="canvas">
+	<div id="book-zoom">
+		<div class="sample-docs">
+			<div ignore="1" class="tabs"><div class="left">  </div> <div class="right"> </div></div>
+		</div>
+	</div>
+</div>
+<br/>
+<div class="home">
+	<a href="../index.html">Home</a>
+</div>
+<style>
+.home
+{
+	display: block;
+	height: 32px;
+	text-align: center;
+	background: #ae997a;
+	color: #fff;
+}
+.home a:hover {
+	background: #8c795d;
+	color: #fff;
+}
+</style>
+
+<script type="text/javascript">
+var Pages;
+
+	//prefix of the page names
+	Pages =
+	[
+		"147-K-KCDZgkR42menspA7G5uJRVRgYql",
+		"1ReTuCuKIPINLyBYNpCecp-MDTNAoQ124",
+		"19pvGsX5QxzlHKSwQBpX_4w3b7mjrYr7e",
+		"1oJ7P63ocXY_bWk1TnsSko3T8MaHrV3qp",
+		"1Yl9a5DoxVMprTuJssoq9NufDBNYh2ehA",
+		"1JXGIVDNiZzLObEYyTrUOhaAYZx3_X1gG",
+		"1fGlNlNNrOUmKBgEA_CbuhCsSiuOtyCoC",
+		"1--4XAIdrfEvX2MTKQ9HrPG6JGpALAYic",
+		"1_Ctq8FZri1_FQHr2PatLjinKeG1mo0IH",
+		"197PlfI4bMnze8zCzXRf3VxnkPBQ5iO4-",
+		"1hjX9h3_DKmh-zuAXLFsT0D6BUWsNNIH4",
+		"1mdYnt8D281iLBNXFrBcHuD5vZzycYiHx",
+		"1wTfHt9BIb-37GMdxHeQhs1mOCB-P1nGI",
+		"1eJnQA33q8KKH9N1oyqfTKQNLPS2lncwx",
+		"1GTltIIavhwrXK-zc-floYvhsE10lcXly",
+		"1aYqx4t9j3k4hpNS5BbD2x0yrZo5pCYxx",
+		"1STahGXIDGV6g-eV2fftdZRR6DmG_jutR",
+		"1FsN6DM2cRFADQiWolCV3mCyEAZEd-Se7",
+		"161oQ42rhodtEnIReZfg-xU9OmoQPEfmo",
+		"1zh92zpMdcQVwSu-Uc8kwOAGGlZIrDjAq",
+		"1CzL4m-48tMzlQofbHf-ibAXEWQ2XXVk5",
+		"1GTRxTRM8rDXtlaY_81P3YQ94PMk3WjpP",
+		"1CocqIEM4UX6txyWg6ji-VK-vw5xJ91Tn",
+		"17sz8Z3cO8gS6dO2xOR7fTeS_4EN7nvog",
+		"1Dx5rPkiMtzixTl2LkgPJTtEGIVg4B2qE",
+		"1CT73ybEzLCkCJqfUSEvaDwLaYKMYsOOP",
+		"1AJd_v4j5tEZYQ9lBMasiUoP4lLCosgOH",
+		"1HMGWc00hwGt9z8Ehcbc7xYm8qJaJ0LwZ",
+		"1Fh5npD572_bnUo1gdZgLzLePanrC74ME",
+		"1oC1zNTzEwoIIORTyqLZrSC_8CskaIgwy",
+		"1DGTzjcdiHkc665cCmV7QJVlTGvcyeTO4",
+		"1xr3JKQek4HEUl_-CWmep9nx6LdKCsFtw",
+		"1PNx-7tO9NnAb3X6aMscD0E3jZXtqiZV_",
+		"1ssXIn-yOOlDaYQ-K12pb0fyRh0_I6ssJ",
+		"1pN-jqAXWK3tZ497bpswgtEUjfW60QW1d",
+		"1gIWv51L5Ctp6SqsG_wNil3eqd1hyYHZL",
+		"1tUCrCdSZtuCL59MjvFJ_zK0onm9Skovj",
+		"1vVfEFD6CCbiyHx2_s62hxvfaNv9jRjTX",
+		"1PQWMxQXzDv5h23GwmvXGGW20PtCL5EJA",
+		"15TqKp4mvcE50MAyt0TIgVEooBA35ESfg",
+		"1lhjxysUkp6abf56CPs7tKN6K1FfmdpBz",
+		"12JOJnzP3eXsfPAHMUaY2PG6AAsQ5RtGf",
+		"1xTzXYPPS1v9p5AiH_BobuieIvLz_llo9",
+		"1fB-aZ3yVz7FvN4tx5q2cmec2okSfv4Hm",
+		"1AxOhJ5rHiggG4iIkbA6NmHTgA5i5C2dL",
+		"13G4jg9JktQkcN5nXiKf5w7uyBXcUK39w",
+		"1JJS0y9-6InPfKnck8tMnrq60d7kJQUYe",
+		"180glThCArYvflKgXa4syBU3aE0BxpBIt",
+		"1eJ5j1OgHLe2wcysut5wGk9gKLTf2zOpH",
+		"1W0YtyK87UnYk-vrTpkQPvJRxLV4nNMzy",
+		"196DTCySWSuUCo1Fohx4EvCO91AqtSbxG",
+		"15qCWEgGOTk_2RGTcB1NZ83vDJc3RDbA-",
+		"1ycXCbRZg-x9Q-1-YOFUzMCXcYffLwMPZ",
+		"1fB1MEOo2JFH4hYJX_A2yBdUJwCc4fqs6",
+		"1sRDdSS4pRzlxzZ8gQp6AM5pk0W1PXVdk",
+		"1quxu7W3_p8u_ZYpd2txzeDRNyIO37FsB",
+		"16jrIMT4cTqP0Y805U1YyumApNIxIhHxE",
+		"1uE-edkHaI5B8ttW_sWgyVE0UmmG59iAE",
+		"1ugcXoyMM2vKiWn8ZYK2GBhtIP1GXx-5B",
+		"1rgoY3S_MCuIJfE4b-NlMbUaBlJcmU5Gx",
+		"1sYpqGqYpSJ3nOgw0vf7PnsBF8kPLb0MF",
+		"1yrwqUgxzmVMs2cMWmDwBsNC26Rbgutlh",
+		"1vUSZcEh278NH3p_dde_LgLR22kUaS8NH",
+		"15e_hfAQXA_jd4ig6sKn2R8zpQeOt-VX1",
+		"1iAHREm8qC8tJcWoX_KZj1B5PrP1RzKvP",
+		"1pMPFVkEdhbOfaFsa_B0W2AtQ8UDF3taZ",
+		"1H_pXM__Yc2R1wBuecKzqVknul8p1Pe0D",
+		"13dwmj35if_Jky8NH-4ovavXEytj6VETh",
+		"17mviFpnl8uXErpbGbZ4ww9MGHqH10hf0",
+		"1X_6ZtFAZH9LmC5BOEa_NpyQjKpin9U6i",
+		"1q44X_Zbch5JCGv8xPTkadmkWayNm6kgE",
+		"1yiRz9yF8-78CT1pTN3pgGTnILvCaDy1l",
+		"1ckM0y0dfzlLrxazu9Qq06RznkNH7D0-D",
+		"1CiHAUf2ERjzW-G2cLag5cRHFBE4Rtn_z",
+		"1Ca1_CmlH_EMRTGuvGm5BbblJbLZ1Zs5r"
+	];
+
+function loadApp() {
+
+	var flipbook = $('.sample-docs');
+
+	// Check if the CSS was already loaded
+	
+	if (flipbook.width()==0 || flipbook.height()==0) {
+		setTimeout(loadApp, 10);
+		return;
+	}
+
+	// Mousewheel
+
+	$('#book-zoom').mousewheel(function(event, delta, deltaX, deltaY) {
+
+		var data = $(this).data(),
+			step = 30,
+			flipbook = $('.sample-docs'),
+			actualPos = $('#slider').slider('value')*step;
+
+		if (typeof(data.scrollX)==='undefined') {
+			data.scrollX = actualPos;
+			data.scrollPage = flipbook.turn('page');
+		}
+
+		data.scrollX = Math.min($( "#slider" ).slider('option', 'max')*step,
+			Math.max(0, data.scrollX + deltaX));
+
+		var actualView = Math.round(data.scrollX/step),
+			page = Math.min(flipbook.turn('pages'), Math.max(1, actualView*2 - 2));
+
+		if ($.inArray(data.scrollPage, flipbook.turn('view', page))==-1) {
+			data.scrollPage = page;
+			flipbook.turn('page', page);
+		}
+
+		if (data.scrollTimer)
+			clearInterval(data.scrollTimer);
+		
+		data.scrollTimer = setTimeout(function(){
+			data.scrollX = undefined;
+			data.scrollPage = undefined;
+			data.scrollTimer = undefined;
+		}, 1000);
+
+	});
+
+	// URIs
+	
+	Hash.on('^page\/([0-9]*)$', {
+		yep: function(path, parts) {
+			var page = parts[1];
+
+			if (page!==undefined) {
+				if ($('.sample-docs').turn('is'))
+					$('.sample-docs').turn('page', page);
+			}
+
+		},
+		nop: function(path) {
+
+			if ($('.sample-docs').turn('is'))
+				$('.sample-docs').turn('page', 1);
+		}
+	});
+
+	// Arrows
+
+	$(document).keydown(function(e){
+
+		var previous = 37, next = 39;
+
+		switch (e.keyCode) {
+			case previous:
+
+				$('.sample-docs').turn('previous');
+
+			break;
+			case next:
+				
+				$('.sample-docs').turn('next');
+
+			break;
+		}
+
+	});
+
+	// Create the flipbook
+
+	flipbook.turn({
+		display : "single",
+		elevation: 50,
+		acceleration: false,
+		gradients: true,
+		autoCenter: true,
+		duration: 1000,
+		pages: Pages.length,
+		when: {
+
+		turning: function(e, page, view) {
+			
+			var book = $(this),
+			currentPage = book.turn('page'),
+			pages = book.turn('pages');
+				
+			if (currentPage>3 && currentPage<pages-3) {
+				if (page==1) {
+					book.turn('page', 2).turn('stop').turn('page', page);
+					e.preventDefault();
+					return;
+				} else if (page==pages) {
+					book.turn('page', pages-1).turn('stop').turn('page', page);
+					e.preventDefault();
+					return;
+				}
+			} else if (page>3 && page<pages-3) {
+				if (currentPage==1) {
+					book.turn('page', 2).turn('stop').turn('page', page);
+					e.preventDefault();
+					return;
+				} else if (currentPage==pages) {
+					book.turn('page', pages-1).turn('stop').turn('page', page);
+					e.preventDefault();
+					return;
+				}
+			}
+
+			Hash.go('page/'+page).update();
+		},
+
+		turned: function(e, page, view) {
+			var book = $(this);
+			book.turn('center');
+		},
+
+		start: function(e, pageObj) {
+	
+			moveBar(true);
+
+		},
+
+		end: function(e, pageObj) {
+		
+			var book = $(this);
+
+			setTimeout(function() {
+				$('#slider').slider('value', getViewNumber(book));
+			}, 1);
+
+			moveBar(false);
+
+		},
+
+		missing: function (e, pages) {
+
+			for (var i = 0; i < pages.length; i++)
+				addPage(pages[i], $(this));
+
+		}
+	}
+	});
+
+
+	$('#slider').slider('option', 'max', numberOfViews(flipbook));
+
+	flipbook.addClass('animated');
+
+
+	// Show canvas
+
+	$('#canvas').css({visibility: 'visible'});
+}
+
+// Hide canvas
+
+$('#canvas').css({visibility: 'hidden'});
+
+yepnope({
+	test: Modernizr.csstransforms,
+	yep: ['../../lib/turn.min.js', 'css/jquery.ui.css'],
+	nope: ['../../lib/turn.html4.min.js', 'css/jquery.ui.html4.css'],
+	both: ['../css/docs.css', '../js/docs.js'],
+	complete: loadApp
+});
+
+</script>
+
+</body>
+</html>
