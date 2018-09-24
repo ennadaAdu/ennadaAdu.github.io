@@ -10,8 +10,7 @@ function loadPage(page) {
 		container.find('.loader').remove();
 	});
 
-	img.attr('src', 'pages/' +  (page) + '.jpeg');
-
+	img.attr('src', 'https://drive.google.com/uc?export&id=' +  Pages[page-1]);
 }
 
 function addPage(page, book) {
