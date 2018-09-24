@@ -4,28 +4,270 @@
 <!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9 ]>    <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+<script type="text/javascript" src="../../extras/jquery.min.1.7.js"></script>
+<script type="text/javascript" src="../../extras/jquery-ui-1.8.20.custom.min.js"></script>
+<script type="text/javascript" src="../../extras/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="../../extras/modernizr.2.5.3.min.js"></script>
+<script type="text/javascript" src="../../lib/hash.js"></script>
+
+</head>
 <script>
-//Prevent default action of a move
-//Used to prevent elastic scrolling when swiped
 function BlockMove(event)
 {
+	alert("Block Move");
         //Tell Safari not to elastically move the window
         event.preventDefault();
 }
 </script>
-
 <body ontouchMove="BlockMove(event);">
 
-<div>
-<a href="varapUje/index.html"><img src="varapUje/pages/1.jpg" width=400 padding=40></img>
-</a> &emsp;
-<a href="sangeeth/index.html"><img src="sangeeth/pages/1.jpg" width=400></img>
-</a>
-<br><br>
-<a href="muhUrtham/index.html"><img src="muhUrtham/pages/1.jpg" width=400></img>
-</a> &emsp;
-<a href="gRhapravEsham/index.html"><img src="gRhapravEsham/pages/1.jpg" width=400></img>
-</a>
+<div id="canvas">
+	<div id="book-zoom">
+		<div class="sample-docs">
+			<div ignore="1" class="tabs"><div class="left">  </div> <div class="right"> </div></div>
+		</div>
+	</div>
 </div>
-</body>
+<br/>
+<div class="home">
+	<a href="../index.html">Home</a>
+</div>
+<style>
+.home
+{
+	display: block;
+	height: 32px;
+	text-align: center;
+	background: #ae997a;
+	color: #fff;
+}
+.home a:hover {
+	background: #8c795d;
+	color: #fff;
+}
+</style>
 
+<script type="text/javascript">
+var Pages;
+
+	//prefix of the page names
+	Pages =
+	[
+		"1uB-EF_iCaN8Z0l0tQ1VaaI_Sfy94gu2Q",
+		"1K8yXa9VNeCe4yWAYQ-ikcJ5UJDLIAUXx",
+		"1DslHDykjXNtgdJqDbKiYGFOkLcqYh_J5",
+		"1VCVa2fexRXhgjvPtR6xN2rub1nMkrogY",
+		"1a0kV_cw3M_KHHvkrgzNzP5OSViS8flco",
+		"1JWEPtexOWlyWg2Wn6FuckvDESDefMbEz",
+		"10_A3SFMd0-MuLF8JP8DtAlyTITmb91gN",
+		"1bD_nOdeJ2rQ1t_G-i1Xwe8PcvltOWPnT",
+		"1MWJ8wyGvWD1mg5VEOtWY480IYr6YuKwR",
+		"1q_3DOxH7TdSUQkV3YIHGN5Xir7xSAYje",
+		"17b2NB2djBPCCiI7Y5epYwUZHoWXHrhcI",
+		"1nC4PGGjumUsYkRlC_S0BsC6t2lZTxLqE",
+		"1-Rqm6-jVoU0wI2FTNHkv-un5cA2OHBSK",
+		"1ps72bNq5woMSpDdmrj3xApLWjzAdKV8s",
+		"1bJNbu4VZ3ctmKJH-vL5UJ7YDY2R-7jK8",
+		"1eY2h0JcVC2oMv-rbAYWC6x2V98lnLQOw",
+		"1pqQ0AkOrkYmWqUrlQCkY3zgYkLgm7of_",
+		"1hlcliljPYa8_poHrUCaYq_A8ziA4DQxw",
+		"1swQDLLkIVKKEl516EbPluFkbUEl1OTnJ",
+		"1iZ9IJaWy5TN9qTatGQVXz1vONQXgyjdv",
+		"1AS0O5358A1PuLfg_sRu2e-xKbJhRo9ab",
+		"1B4aLB2nKeQbLFxUP6GDNWMkdz3uTU42e",
+		"182yUpzzQ8zLq7UruodxfvqbliN0pHan7",
+		"1iW4CaIdZbj8sk2e6TYSIPfgZCfv0hL93",
+		"1AxpuMH2AFJ4SeRREqCl2HmHUBmmYb3uP",
+		"1L5cUIHXr4Azld2WYY7HV9Il3FtHKfq4q"
+	];
+
+function loadApp() {
+
+	var flipbook = $('.sample-docs');
+
+	// Check if the CSS was already loaded
+	
+	if (flipbook.width()==0 || flipbook.height()==0) {
+		setTimeout(loadApp, 10);
+		return;
+	}
+
+	// Mousewheel
+
+	$('#book-zoom').mousewheel(function(event, delta, deltaX, deltaY) {
+
+		var data = $(this).data(),
+			step = 30,
+			flipbook = $('.sample-docs'),
+			actualPos = $('#slider').slider('value')*step;
+
+		if (typeof(data.scrollX)==='undefined') {
+			data.scrollX = actualPos;
+			data.scrollPage = flipbook.turn('page');
+		}
+
+		data.scrollX = Math.min($( "#slider" ).slider('option', 'max')*step,
+			Math.max(0, data.scrollX + deltaX));
+
+		var actualView = Math.round(data.scrollX/step),
+			page = Math.min(flipbook.turn('pages'), Math.max(1, actualView*2 - 2));
+
+		if ($.inArray(data.scrollPage, flipbook.turn('view', page))==-1) {
+			data.scrollPage = page;
+			flipbook.turn('page', page);
+		}
+
+		if (data.scrollTimer)
+			clearInterval(data.scrollTimer);
+		
+		data.scrollTimer = setTimeout(function(){
+			data.scrollX = undefined;
+			data.scrollPage = undefined;
+			data.scrollTimer = undefined;
+		}, 1000);
+
+	});
+
+	// URIs
+	
+	Hash.on('^page\/([0-9]*)$', {
+		yep: function(path, parts) {
+			var page = parts[1];
+
+			if (page!==undefined) {
+				if ($('.sample-docs').turn('is'))
+					$('.sample-docs').turn('page', page);
+			}
+
+		},
+		nop: function(path) {
+
+			if ($('.sample-docs').turn('is'))
+				$('.sample-docs').turn('page', 1);
+		}
+	});
+
+	// Arrows
+
+	$(document).keydown(function(e){
+
+		var previous = 37, next = 39;
+
+		switch (e.keyCode) {
+			case previous:
+
+				$('.sample-docs').turn('previous');
+
+			break;
+			case next:
+				
+				$('.sample-docs').turn('next');
+
+			break;
+		}
+
+	});
+
+	// Create the flipbook
+
+	flipbook.turn({
+		display : "single",
+		elevation: 50,
+		acceleration: false,
+		gradients: true,
+		autoCenter: true,
+		duration: 1000,
+		pages: Pages.length,
+		when: {
+
+		turning: function(e, page, view) {
+			
+			var book = $(this),
+			currentPage = book.turn('page'),
+			pages = book.turn('pages');
+				
+			if (currentPage>3 && currentPage<pages-3) {
+				if (page==1) {
+					book.turn('page', 2).turn('stop').turn('page', page);
+					e.preventDefault();
+					return;
+				} else if (page==pages) {
+					book.turn('page', pages-1).turn('stop').turn('page', page);
+					e.preventDefault();
+					return;
+				}
+			} else if (page>3 && page<pages-3) {
+				if (currentPage==1) {
+					book.turn('page', 2).turn('stop').turn('page', page);
+					e.preventDefault();
+					return;
+				} else if (currentPage==pages) {
+					book.turn('page', pages-1).turn('stop').turn('page', page);
+					e.preventDefault();
+					return;
+				}
+			}
+
+			Hash.go('page/'+page).update();
+		},
+
+		turned: function(e, page, view) {
+			var book = $(this);
+			book.turn('center');
+		},
+
+		start: function(e, pageObj) {
+	
+			moveBar(true);
+
+		},
+
+		end: function(e, pageObj) {
+		
+			var book = $(this);
+
+			setTimeout(function() {
+				$('#slider').slider('value', getViewNumber(book));
+			}, 1);
+
+			moveBar(false);
+
+		},
+
+		missing: function (e, pages) {
+
+			for (var i = 0; i < pages.length; i++)
+				addPage(pages[i], $(this));
+
+		}
+	}
+	});
+
+
+	$('#slider').slider('option', 'max', numberOfViews(flipbook));
+
+	flipbook.addClass('animated');
+
+
+	// Show canvas
+
+	$('#canvas').css({visibility: 'visible'});
+}
+
+// Hide canvas
+
+$('#canvas').css({visibility: 'hidden'});
+
+yepnope({
+	test: Modernizr.csstransforms,
+	yep: ['../../lib/turn.min.js', 'css/jquery.ui.css'],
+	nope: ['../../lib/turn.html4.min.js', 'css/jquery.ui.html4.css'],
+	both: ['../css/docs.css', '../js/docs.js'],
+	complete: loadApp
+});
+
+</script>
+
+</body>
+</html>
