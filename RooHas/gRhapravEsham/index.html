@@ -180,11 +180,13 @@ function loadApp() {
 		pages: Pages.length,
 		when: {
 			swipeLeft: function() {
-				$(this).turn('next');
+				$('.sample-docs').turn('next');
+				//$(this).turn('next');
 			},
 
 			swipeRight: function() {
-				$(this).turn('previous');
+				$('.sample-docs').turn('previous');
+				//$(this).turn('previous');
 			},
 
 		turning: function(e, page, view) {
