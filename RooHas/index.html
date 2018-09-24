@@ -8,12 +8,13 @@
 <script>
 function BlockMove(event)
 {
+	alert("Touch move");
 	//Tell Safari not to elastically move the window
 	event.preventDefault();
 }
 </script>
 
-<body ontouchmove="BlockMove(event);">
+<body ontouchMove="BlockMove(event);">
 
 <div>
 <a href="varapUje/index.html"><img src="varapUje/pages/1.jpg" width=400 padding=40></img>
