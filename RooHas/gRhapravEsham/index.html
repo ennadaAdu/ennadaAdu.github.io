@@ -180,11 +180,11 @@ function loadApp() {
 		pages: Pages.length,
 		when: {
 			swipeLeft: function() {
-				$(this).zoom('flipbook').turn('next');
+				$(this).turn('next');
 			},
 
 			swipeRight: function() {
-				$(this).zoom('flipbook').turn('previous');
+				$(this).turn('previous');
 			},
 
 		turning: function(e, page, view) {
