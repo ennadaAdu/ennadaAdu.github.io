@@ -12,6 +12,14 @@
 <script type="text/javascript" src="../../lib/hash.js"></script>
 
 </head>
+<script>
+function BlockMove(event)
+{
+        //Tell Safari not to elastically move the window
+        event.preventDefault();
+}
+</script>
+
 <body ontouchMove="BlockMove(event);">
 
 <div id="canvas">
