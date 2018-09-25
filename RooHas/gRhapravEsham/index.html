@@ -275,6 +275,24 @@ yepnope({
 	complete: loadApp
 });
 
+if ($.isTouch)
+{
+	$('.sample-docs').bind('touchstart', regionClick);
+}
+else
+{
+	$('.sample-docs').click(regionClick);
+}
+
+function regionClick(event)
+{
+	var x = event.clientX;
+	alert ("x = " + x);
+	alert($('.sample-docs').turn('page', 2).style.left);
+	$('.sample-docs').turn('next');
+}
+	
+
 </script>
 
 </body>
