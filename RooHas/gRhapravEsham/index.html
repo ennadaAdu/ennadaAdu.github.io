@@ -287,9 +287,10 @@ else
 function regionClick(event)
 {
 	var x = event.clientX;
-	alert ("x = " + x);
-	alert($('.sample-docs').turn('page', 2).style.left);
-	$('.sample-docs').turn('next');
+	if(x > 400)
+		$('.sample-docs').turn('next');
+	else
+		$('.sample-docs').turn('previous');
 }
 	
 
