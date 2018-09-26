@@ -302,6 +302,23 @@ yepnope({
 	complete: loadApp
 });
 
+if ($.isTouch)
+{
+	$('.sample-docs').bind('touchstart', regionClick);
+}
+else
+{
+	$('.sample-docs').click(regionClick);
+}
+
+function regionClick(event)
+{
+	var x = event.clientX;
+	if(x > 400)
+		$('.sample-docs').turn('next');
+	else
+		$('.sample-docs').turn('previous');
+}
 </script>
 
 </body>
