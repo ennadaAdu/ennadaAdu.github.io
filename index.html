@@ -11,21 +11,7 @@
 		vjs-workinghover vjs-v7 vjs_video_3-dimensions
 		vjs-http-source-selector vjs-has-started vjs-paused
 		vjs-user-inactive vjs-big-play-button" preload="auto">
-		<!-- full video. MP4 on google drive -->
-		<!-- source src="https://drive.google.com/uc?export=view&id=1CetUwcQvy-7_p-d7tEikQnw7mtcJaZgJ" type="video/mp4" /-->
-		
-		<!-- HSL Video short on google drive Does not work
-			for link for only the master file
-			with separate links for the sub file in the
-			master file itself. Did not work  -->		
-		<!-- source src="https://drive.google.com/uc?export=view&id=1hjoKJcI6U8sk-rCI9yXEYQxgJghkEQub" type="application/x-mpegurl" / -->
-		
-		<!-- short video. HLS on github -->
-		<!-- source src="https://ennadaAdu.github.io/Videos/master.m3u8" type="application/x-mpegURL" -->
-		
-		<!-- file on local drive, served by localhost -->
-		<source src="Videos/00SepSound/master.m3u8"
-			type="application/x-mpegurl" /> 
+		<source src="Videos/master.m3u8" type="application/x-mpegURL">
       </video-js>
 <script>
     var player = videojs('my_video_1',
