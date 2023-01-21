@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8 />
+	<title>Simple</title>
+</head>
+<body>
+	<div style="float:left;margin-right:20px;">
+		<label style="display:block;" for="language">Language</label>
+  		<select id="language" size="3" onchange="choseLanguage()"> \
+   			<option value="Kannada" selected>ಕನ್ನಡ</option>
+   			<option value="English">English</option>
+   			<option value="SamskRtham">संस्कृतम्‌</option>
+   			<option value="Thelugu">ತೆಲುಗು‌</option>
+   		</select>
+   	</div>
+   	<div style="float:left;margin-right:20px;">
+		<label style="display:block;" for="shruthi">Shruthi</label>
+  		<select id="shruthi" size="3" onchange="choseShruthi()"> \
+   			<option value="1 1/2" selected>1 1/2</option>
+   			<option value="5 1/2">5 1/2</option>
+   		</select>
+   	</div>
+   	<br><br>
+   	<div>
+   		<a href="google2.html" target="_blank">
+	   		<button type=button
+   				style="height:50px; width:100px; background-color:#00ff00;">
+   				Videos
+   			</button>
+   		</a>
+   	</div>
+<script>
+	choseLanguage = function()
+	{
+		languageSelect = document.getElementById('language');
+		selectedIndex = languageSelect.selectedIndex;
+				
+		//Commit it to local storage
+		localStorage.setItem("language",
+			languageSelect[selectedIndex].value);
+	}
+	choseShruthi = function()
+	{
+		shruthiSelect = document.getElementById('shruthi');
+		selectedIndex = shruthiSelect.selectedIndex;
+				
+		//Commit it to local storage
+		localStorage.setItem("shruthi",
+			shruthiSelect[selectedIndex].value);
+	}
+	
+	setElementStorage = function(elementName, defaultValue)
+	{
+		element = localStorage.getItem(elementName);
+		if (element === null)
+		{
+			element = defaultValue;
+			localStorage.setItem(elementName, element);
+		}
+		
+		// Set the selected item in the selector
+		elementSelect = document.getElementById(elementName);
+		var i, option;
+
+		for(i = 0; i < elementSelect.length; i++)
+		{
+			option = elementSelect[i];
+       		if (option.value === element)
+       		{
+				elementSelect[i].selected = true;
+			}
+		}
+	}
+	window.onload = function()
+	{
+		setElementStorage("language", "Kannada");
+		setElementStorage("shruthi", "1 1/2");
+	}
+</script> 
+</body>
+</html>
