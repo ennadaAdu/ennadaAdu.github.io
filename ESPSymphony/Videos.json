@@ -1,0 +1,45 @@
+{
+	"Videos":
+	[ 
+		{
+			"name": "lambOdhara",
+			"english": "lambOdhara",
+			"kannada": "ಲಂಬೋದರ",
+			"samskRtham": "लम्बोदर",
+			"thamiLu": "லம்போதர",
+			"thelugu": "లంబోదర"
+		},
+		{
+			"name": "alai",
+			"english": "alai pAyudhE",
+			"kannada": "ಅಲೈ ಪಾಯುದೇ",
+			"samskRtham": "अलै पायुदे",
+			"thamiLu": "அலை பாயுதே",
+			"thelugu": "అలై పాయుదే"
+		},
+		{
+			"name": "garuda",
+			"english": "garuda-gamana",
+			"kannada": "ಗರುಡ-ಗಮನ",
+			"samskRtham": "गरुड-गमन",
+			"thamiLu": "கருட-கமன",
+			"thelugu": "గరుడ-గమన"
+		},
+		{
+			"name": "pAl",
+			"english": "pAl aBiShEkam",
+			"kannada": "ಪಾಲ್ ಅಭಿಷೇಕಂ",
+			"samskRtham": "पाल् अभिषेकम्",
+			"thamiLu": "பால் அபிஷேகம்",
+			"thelugu": "పాల్ అభీషేకం"
+		},
+		{
+			"name": "nith",
+			"english": "nithyOthsava",
+			"kannada": "ನಿತ್ಯೋತ್ಸವ",
+			"samskRtham": "िनत्योत्सव",
+			"thamiLu": "னித்யோத்ஸவ",
+			"thelugu": "నిత్యోత్సవ"
+		}
+	]
+}
