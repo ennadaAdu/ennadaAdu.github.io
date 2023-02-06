@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset=utf-8 />
-	<title>Simple</title>
+	<title>ESPSymphony</title>
 	<link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
 	<script src="https://unpkg.com/video.js/dist/video.js"></script>
 </head>
@@ -12,47 +12,8 @@
 		vjs-http-source-selector vjs-has-started vjs-paused
 		vjs-user-inactive vjs-big-play-button" preload="auto"
 		allowfullscreen="true">
-
-		<!--source src="https://ennadaAdu.github.io/ESPSymphony/Videos/lambOdhara/master.m3u8" type="application/x-mpegURL" -->
 	</video-js>
-<script>
-	/********************************************************/
-	/* Script starts here
-	/********************************************************/
-	/********************************************************/
-	/* video player setup
-	/********************************************************/
-	setItem = function(elementName, defaultValue)
-	{
-		element = localStorage.getItem(elementName);
-		if (element === null)
-		{
-			element = defaultValue;
-			localStorage.setItem(elementName,element);
-		}
-	}
-	window.onload = function()
-	{
-		setItem("Video", "lambOdhara");
-		setItem("shruthi", "1 1/2");
-	}
-    var player = videojs('my_video_1',
-    	{
-    		playbackRates: [0.5, 0.75, 1, 1.25, 1.5],
-    		html5:
-    		{
-            	vhs:
-            	{
-              		overrideNative: true
-            	}
-          	},
-          	sources: [{
-    			type: "application/x-mpegURL",
-    			src: "https://ennadaAdu.github.io/ESPSymphony/Videos/" +
-    				localStorage.getItem('Video') + "/master.m3u8"
-  			}]
-        });
-    player.play();
+<script src="../js/video.js">
 </script>
       
 </body>
